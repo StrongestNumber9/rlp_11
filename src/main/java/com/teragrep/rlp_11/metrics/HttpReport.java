@@ -48,10 +48,10 @@ package com.teragrep.rlp_11.metrics;
 import com.codahale.metrics.MetricRegistry;
 import io.prometheus.client.CollectorRegistry;
 import io.prometheus.client.dropwizard.DropwizardExports;
-import io.prometheus.client.exporter.MetricsServlet;
+import io.prometheus.metrics.exporter.servlet.jakarta.PrometheusMetricsServlet;
+import org.eclipse.jetty.ee10.servlet.ServletContextHandler;
+import org.eclipse.jetty.ee10.servlet.ServletHolder;
 import org.eclipse.jetty.server.Server;
-import org.eclipse.jetty.servlet.ServletContextHandler;
-import org.eclipse.jetty.servlet.ServletHolder;
 
 import java.io.IOException;
 
@@ -74,7 +74,7 @@ public class HttpReport implements Report {
         context.setContextPath("/");
         jettyServer.setHandler(context);
 
-        final MetricsServlet metricsServlet = new MetricsServlet();
+        final PrometheusMetricsServlet metricsServlet = new PrometheusMetricsServlet();
         final ServletHolder servletHolder = new ServletHolder(metricsServlet);
         context.addServlet(servletHolder, "/metrics");
 
