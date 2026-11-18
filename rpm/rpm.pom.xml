@@ -153,17 +153,18 @@
                 </source>
               </sources>
             </mapping>
+            <mapping>
+              <directory>/usr/lib/sysusers.d</directory>
+              <sources>
+                <source>
+                  <location>../src/main/resources/srv-rlp_11.conf</location>
+                </source>
+              </sources>
+            </mapping>
           </mappings>
           <requires>
             <require>java-17-openjdk-headless</require>
           </requires>
-          <preinstallScriptlet>
-            <script>
-getent group srv-rlp_11 > /dev/null || groupadd -r srv-rlp_11;
-getent passwd srv-rlp_11 > /dev/null || useradd -r -g srv-rlp_11 -d /opt/teragrep/${project.artifactId} -s /sbin/nologin -c "Service User" srv-rlp_11;
-exit 0;
-            </script>
-          </preinstallScriptlet>
         </configuration>
       </plugin>
       <plugin>
