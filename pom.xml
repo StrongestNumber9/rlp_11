@@ -531,6 +531,8 @@
             <!-- packaging -->
             <exclude>rpm/rpm.pom.xml</exclude>
             <exclude>rpm/src/**</exclude>
+            <!-- sysusers.d resource -->
+            <exclude>src/main/resources/srv-rlp_11.conf</exclude>
           </excludes>
         </configuration>
         <executions>
